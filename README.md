@@ -27,7 +27,7 @@ The LCG (short for Linear Congruential Generator) is based on the following numb
 
 whereas the modulo _m_ defines the **periodicity**, _x0_ is called the **seed** of the number sequence, _a_ being a natural number used as a **multiplier** and _c_ called an **increment**. In case that c equals 0 (zero) the LCG is sometimes referred being a _Park–Miller random number generator_ (after Stephen K. Park and Keith W. Miller) or a _Derrick Henry Lehmer RNG_.
 
-Some basic implementations of LCGs in different programming languages are available in the public domain or other open licensing.
+Some basic implementations of LCGs in different programming languages are available in the public domain or other open licensing. The implementations available in this code repository are MIT licensed (See license file).
 
 The statistical quality of the LCG strongly depends on choice of the parameters for multiplier a, increment c, and modulo m. Common proposals are described and available in https://en.wikipedia.org/wiki/Linear_congruential_generator and referenced publication listed in there.
 
