@@ -21,3 +21,4 @@ The LCG (short for Linear Congruential Generator) ...
 <mi>m</mi>
 </mrow>
 </math -->
+<!-- x_{n+1} = ( a x_{n} + c )  \mod m -->
