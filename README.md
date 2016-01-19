@@ -41,7 +41,7 @@ So a possible simple help might be to choose
 Usually due to the number representation of the hardware architecture a specific number range and modulus is targeted and preferred over other values for these parameters. Additionally the number representation as used by the programming language introduces constraints and restrictions to keep the algorithm simple in code.
 
 ## Bibliography / References
-* [PRB69] Payne, Rabung, Bogyo, "Coding the Lehmer pseudo-random number generator", Communications of the ACM Volume 12 #2: p.85–86, 1969, http://www.firstpr.com.au/dsp/rand31/p85-payne.pdf
+* [PRB69] Payne, Rabung, Bogyo, "Coding the Lehmer pseudo-random number generator", Communications of the ACM Volume 12 #2: p.85–86, 1969. http://www.firstpr.com.au/dsp/rand31/p85-payne.pdf
 * [PM88] Stephen K. Park and Keith W. Miller, "Random Number Generators: Good Ones Are Hard To Find", Communications of the ACM Volume 31 #10: p.1192–1201, 1988. http://www.firstpr.com.au/dsp/rand31/p1192-park.pdf
 * [boost-1] https://github.com/boostorg/random/blame/develop/include/boost/random/linear_congruential.hpp
   * https://github.com/boostorg/random/commit/2248892f096109bcc58a29831ad5e7ad8d347d06 , include/boost/random/linear_congruential.hpp
