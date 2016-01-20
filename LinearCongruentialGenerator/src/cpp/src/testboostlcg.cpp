@@ -1,5 +1,5 @@
-/**
- * Test the random number sequence produced by a Linear Congurential Generator
+/** \file testboostlcg.cpp
+ * Test random number sequence produced by C++ BOOST Linear Congurential Generator
  *
  * MIT licensed (See LICENSE file being part of the repository)
  * Copyright (c) 2016 Oliver Merkel
@@ -9,26 +9,18 @@
  *
  */
 
-var a = 16807; // multiplier, 7**5
-var m = 0x7FFFFFFF; // prime modulus, Mersenne prime 2147483647 = 2**31-1
-var q = 127773; // m divided by a
-var r = 2836; // m modulo a
-// this.a * this.q + this.r == this.m
-// 7**5 * 127773 + 2836 == 2**31-1
-var lcg = new LinearCongurentialGenerator( a, m, q, r);
-lcg.setSeed(1);
+#include <gtest/gtest.h>
+#include <iostream>
+#include <iomanip>
+#include <boost/random/linear_congruential.hpp>
 
-for(var j=0; j<10; ++j) {
-  var o = ''
-  for(var i=0; i<5; ++i) {
-    var rand = lcg.getInt();
-    o+=("          " + rand).substring(('' + rand).length) + ", ";
-  }
-  console.log(o);
-}
+TEST(boostMinstdRand0LCG, ExpectedSequenceTest) {
+  int32_t seed = 1;
+  // In header: <boost/random/linear_congruential.hpp>
+  // typedef linear_congruential_engine< uint32_t, 16807, 0, 2147483647 > minstd_rand0;
+  boost::minstd_rand0 baseGen(seed);
 
-QUnit.test( "Expected Sequence Test", function( assert ) {
-  var expected = [
+  int32_t expected[] = {
          16807,  282475249, 1622650073,  984943658, 1144108930,
      470211272,  101027544, 1457850878, 1458777923, 2007237709,
      823564440, 1115438165, 1784484492,   74243042,  114807987,
@@ -2029,18 +2021,18 @@ QUnit.test( "Expected Sequence Test", function( assert ) {
      162430624,  519782231,   16480421, 2108528931,  270600523,
     1760109362,  570809709,  789328014, 1229443779,  173942219,
      721631166, 1614852353,  925166085, 1484786315, 1043618065
-  ]
-  var a = 16807; // multiplier, 7**5
-  var m = 0x7FFFFFFF; // prime modulus, Mersenne prime 2147483647 = 2**31-1
-  var q = 127773; // m divided by a
-  var r = 2836; // m modulo a
-  // this.a * this.q + this.r == this.m
-  // 7**5 * 127773 + 2836 == 2**31-1
-  var lcg = new LinearCongurentialGenerator( a, m, q, r);
-  lcg.setSeed(1);
-  for(var i=0; i<expected.length; ++i) {
-    var rand = lcg.getInt();
-    assert.ok( expected[i] == rand, "Expected value " + rand + " passed!" );
+  };
+  int32_t amount = sizeof(expected)/sizeof(*expected);
+  std::cout << "Expected Sequence Test (" << amount << ")" << std::endl;
+  for (int i = 0; i < amount; i++) {
+    std::cout << std::setw(6) << (i+1) << ". Expected value "
+      << std::setw(10) << expected[i] << " passed!" << std::endl;
+    ASSERT_EQ( expected[i], baseGen() );
   }
-});
+}
+
+int main(int argc, char **argv) {
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
 

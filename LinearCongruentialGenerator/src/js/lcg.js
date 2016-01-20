@@ -1,4 +1,4 @@
-/*
+/**
  * Implementation of a Linear Congurential Generator
  *
  * MIT licensed (See LICENSE file being part of the repository)
