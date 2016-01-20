@@ -34,8 +34,8 @@ The statistical quality of the LCG strongly depends on choice of the parameters 
 So a possible simple help might be to choose
 
 * increment _c_ not being equal to 0 (zero),
-* multiplier _a_ being prime or with low amount of prime factors,
-* prime factors of multiplier _a_ and prime factors of increment _c_ shall differ,
+* multiplier _a_ and modulus _m_ being prime or with low amount of prime factors,
+* prime factors of multiplier _a_, increment _c_, and modulus _m_ shall differ,
 * factorization of parameters shall not have values similar to any semantics for the domain the RNG is in use, e.g. multiplier _a_ as 16807 = 7**5 possibly being problematic to randomly select a day of week (7d == 1w).
 
 Usually due to the number representation of the hardware architecture a specific number range and modulus is targeted and preferred over other values for these parameters. Additionally the number representation as used by the programming language introduces constraints and restrictions to keep the algorithm simple in code.
