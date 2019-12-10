@@ -15,7 +15,7 @@ var q = 127773; // m divided by a
 var r = 2836; // m modulo a
 // this.a * this.q + this.r == this.m
 // 7**5 * 127773 + 2836 == 2**31-1
-var lcg = new LinearCongurentialGenerator( a, m, q, r);
+var lcg = new LinearCongurentialGeneratorParkMillerSchrage( a, m, q, r);
 lcg.setSeed(1);
 
 for(var j=0; j<10; ++j) {
@@ -27,7 +27,7 @@ for(var j=0; j<10; ++j) {
   console.log(o);
 }
 
-QUnit.test( "Expected Sequence Test", function( assert ) {
+QUnit.test( "Expected Sequence Test - Park-Miller rng, Schrage's method", function( assert ) {
   var expected = [
          16807,  282475249, 1622650073,  984943658, 1144108930,
      470211272,  101027544, 1457850878, 1458777923, 2007237709,
@@ -2036,11 +2036,10 @@ QUnit.test( "Expected Sequence Test", function( assert ) {
   var r = 2836; // m modulo a
   // this.a * this.q + this.r == this.m
   // 7**5 * 127773 + 2836 == 2**31-1
-  var lcg = new LinearCongurentialGenerator( a, m, q, r);
+  var lcg = new LinearCongurentialGeneratorParkMillerSchrage( a, m, q, r);
   lcg.setSeed(1);
   for(var i=0; i<expected.length; ++i) {
     var rand = lcg.getInt();
     assert.ok( expected[i] == rand, "Expected value " + rand + " passed!" );
   }
 });
-
