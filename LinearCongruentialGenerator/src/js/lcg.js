@@ -13,9 +13,6 @@
  * Section 8.5: double-precision 64-bit format IEEE 754 values plus special NaN
  * The mantisse is build on 53-bit
  *
- * This implementation is MINSTD_rand0. Thus the LCG s = ( a*s +c )%m simplifies using c=0.
- * Algorithm is "Schrage's method" sometimes referred as "approximate factoriation method.
- * 
  * References:
  * Payne, Rabung, Bogyo, "Coding the Lehmer pseudo-random number generator", Communications of the ACM Volume 12 #2: p.85–86, 1969.
  * Stephen K. Park and Keith W. Miller, "Random Number Generators: Good Ones Are Hard To Find", Communications of the ACM Volume 31 #10: p.1192–1201, 1988.
@@ -23,6 +20,12 @@
  */
 
 function LinearCongurentialGeneratorParkMillerSchrage( a, m, q, r ) {
+  /*
+   * This implementation is MINSTD_rand0 if
+   * lcg = new LinearCongurentialGeneratorParkMillerSchrage( 16807, 0x7FFFFFFF, 127773, 2836 ).
+   * Thus the LCG s=( a*s +c )%m simplifies using c=0.
+   * Algorithm is "Schrage's method" sometimes referred as "approximate factoriation method.
+   */
   this.a = a; // multiplier
   this.m = m; // modulus
   this.q = q; // m divided by a (for best use of integer range)
@@ -42,6 +45,8 @@ LinearCongurentialGeneratorParkMillerSchrage.prototype.getInt = function() {
   return this.seed;
 }
 
+// -------------------------------------------------------
+
 function LinearCongurentialGenerator( a, m, c ) {
   this.a = a; // multiplier
   this.m = m; // modulus
@@ -54,5 +59,21 @@ LinearCongurentialGenerator.prototype.setSeed = function(s) {
 
 LinearCongurentialGenerator.prototype.getInt = function() {
   this.seed = (this.a * this.seed + this.c) % this.m;
+  return this.seed;
+}
+
+// -------------------------------------------------------
+
+function LehmerGenerator( a, m ) {
+  this.a = a; // multiplier
+  this.m = m; // modulus
+}
+
+LehmerGenerator.prototype.setSeed = function(s) {
+  this.seed = s;
+};
+
+LehmerGenerator.prototype.getInt = function() {
+  this.seed = (this.a * this.seed) % this.m;
   return this.seed;
 }
