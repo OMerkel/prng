@@ -22,11 +22,30 @@
  * Linus Schrage, "A More Portable Fortran Random Number Generator", ACM transactions on Mathematical Software, Vol.5, No. 2: p.132-138, June 1979.
  */
 
-function LinearCongurentialGenerator( a, m, q, r ) {
+function LinearCongurentialGeneratorParkMillerSchrage( a, m, q, r ) {
   this.a = a; // multiplier
   this.m = m; // modulus
   this.q = q; // m divided by a (for best use of integer range)
   this.r = r; // m modulo a (for best use of integer range)
+}
+
+LinearCongurentialGeneratorParkMillerSchrage.prototype.setSeed = function(s) {
+  this.seed = s;
+};
+
+LinearCongurentialGeneratorParkMillerSchrage.prototype.getInt = function() {
+  var xn = this.seed;
+  var hi = Math.floor(xn / this.q);
+  var lo = xn - hi * this.q;
+  xn = this.a * lo - hi * this.r;
+  this.seed = xn < 0 ? xn + this.m : xn;
+  return this.seed;
+}
+
+function LinearCongurentialGenerator( a, m, c ) {
+  this.a = a; // multiplier
+  this.m = m; // modulus
+  this.c = c; // constant
 }
 
 LinearCongurentialGenerator.prototype.setSeed = function(s) {
@@ -34,10 +53,6 @@ LinearCongurentialGenerator.prototype.setSeed = function(s) {
 };
 
 LinearCongurentialGenerator.prototype.getInt = function() {
-  var xn = this.seed;
-  var hi = Math.floor(xn / this.q);
-  var lo = xn - hi * this.q;
-  xn = this.a * lo - hi * this.r;
-  this.seed = xn < 0 ? xn + this.m : xn;
+  this.seed = (this.a * this.seed + this.c) % this.m;
   return this.seed;
 }
