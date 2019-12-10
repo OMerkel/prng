@@ -14,7 +14,7 @@
  * The mantisse is build on 53-bit
  *
  * This implementation is MINSTD_rand0. Thus the LCG s = ( a*s +c )%m simplifies using c=0.
- * Algorithm is "Schrage's method" sometimes referred as "approximate factoriation mathod.
+ * Algorithm is "Schrage's method" sometimes referred as "approximate factoriation method.
  * 
  * References:
  * Payne, Rabung, Bogyo, "Coding the Lehmer pseudo-random number generator", Communications of the ACM Volume 12 #2: p.85–86, 1969.
