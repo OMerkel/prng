@@ -40,6 +40,10 @@ So a possible simple help might be to choose
 
 Usually due to the number representation of the hardware architecture a specific number range and modulus is targeted and preferred over other values for these parameters. Additionally the number representation as used by the programming language introduces constraints and restrictions to keep the algorithm simple in code.
 
+### Expected Sequence Test for Javascript Implementations
+
+* http://omerkel.github.io/prng/LinearCongruentialGenerator/src/js/test_lcg.html
+
 ## Bibliography / References
 * [PRB69] "Coding the Lehmer pseudo-random number generator", Payne, Rabung, Bogyo, Communications of the ACM Volume 12 #2: pp. 85–86, 1969. http://www.firstpr.com.au/dsp/rand31/p85-payne.pdf
 * [LGM69] "A pseudo-random number generator for the System/360", P.A. Lewis, A.S. Goodman, J.M. Miller, IBM Systems Journal, Volume 8 #2: pp. 136-146, 1969.
