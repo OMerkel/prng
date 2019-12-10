@@ -13,7 +13,7 @@
  * Section 8.5: double-precision 64-bit format IEEE 754 values plus special NaN
  * The mantisse is build on 53-bit
  *
- * This implementation is MINSTD_rand0. Thus the LCG s = ( a*r +c ) % m simplifies using c=0.
+ * This implementation is MINSTD_rand0. Thus the LCG s = ( a*s +c )%m simplifies using c=0.
  * Algorithm is "Schrage's method" sometimes referred as "approximate factoriation mathod.
  * 
  * References:
